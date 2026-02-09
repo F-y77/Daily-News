@@ -1,7 +1,7 @@
 name = "每日新闻 (Daily News)"
 description = "每天白天在聊天框显示新闻，预告当天会发生的特殊事件。\n\nDisplays daily news in chat during daytime, announcing special events that will happen today."
-author = "Your Name"
-version = "1.0.0"
+author = "橙小幸"
+version = "0.4"
 
 forumthread = ""
 api_version = 10
@@ -11,6 +11,7 @@ dont_starve_compatible = false
 reign_of_giants_compatible = false
 all_clients_require_mod = false
 client_only_mod = false
+server_only_mod = true
 
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
