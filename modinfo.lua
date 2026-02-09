@@ -1,7 +1,7 @@
 name = "每日新闻 (Daily News)"
-description = "每天白天在聊天框显示新闻，预告当天会发生的特殊事件。\n\nDisplays daily news in chat during daytime, announcing special events that will happen today."
+description = "每天白天在聊天框显示新闻，预告当天会发生的特殊事件。30种不同事件，包含生物、资源、食物、稀有材料等。\n\nDisplays daily news in chat during daytime, announcing special events that will happen today. 30 different events including creatures, resources, food, and rare materials."
 author = "橙小幸"
-version = "0.4"
+version = "0.5.0"
 
 forumthread = ""
 api_version = 10
@@ -29,7 +29,7 @@ configuration_options = {
             {description = "2个事件", data = 2},
             {description = "3个事件", data = 3},
         },
-        default = 1,
+        default = 2,
     },
     {
         name = "news_style",
@@ -39,6 +39,6 @@ configuration_options = {
             {description = "正式播报", data = "formal"},
             {description = "调皮趣味", data = "playful"},
         },
-        default = "formal",
+        default = "playful",
     },
 }
