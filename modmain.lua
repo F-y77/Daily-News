@@ -1,19 +1,17 @@
--- 每日新闻模组 Daily News Mod
+
 GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL, k) end })
 
--- 获取配置（使用安全的方式）
 local EVENT_COUNT = 1
 local NEWS_STYLE = "formal"
 
--- 延迟获取配置，避免崩溃
 local function GetConfig()
     EVENT_COUNT = GetModConfigData("event_count") or 1
     NEWS_STYLE = GetModConfigData("news_style") or "formal"
 end
 
--- 新闻事件列表（精简到真正有效的事件）
+-- 新闻事件列表（
 local NEWS_EVENTS = {
-    -- 1. 生物生成类（立即生效，简单有效）
+    -- 1. 生物生成类
     {
         news = {
             formal = "【青蛙雨季】今天会有大量青蛙出现！",
@@ -646,9 +644,9 @@ local NEWS_EVENTS = {
     },
 }
 
--- 当前激活的事件
+
 local current_events = {}
-local last_day = -1
+local last_day = -1 --一天时间生成 每天白天记录
 
 -- 随机选择指定数量的事件
 local function SelectDailyEvents()
