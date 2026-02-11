@@ -1,7 +1,13 @@
 name = "每日新闻 (Daily News)"
-description = "每天白天在聊天框显示新闻，预告当天会发生的特殊事件。30种不同事件，包含生物、资源、食物、稀有材料等。\n\nDisplays daily news in chat during daytime, announcing special events that will happen today. 30 different events including creatures, resources, food, and rare materials."
+description = [[
+
+每天白天在聊天框显示新闻，预告当天会发生的特殊事件。60种不同事件。\n\nDisplays daily news in chat during daytime. 60 different events.
+
+推荐开荒使用 We recommend using it for The first time 
+
+]]
 author = "橙小幸"
-version = "0.5.0"
+version = "0.6.5"
 
 forumthread = ""
 api_version = 10
@@ -16,9 +22,8 @@ server_only_mod = true
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
 
-server_filter_tags = {"daily", "news", "events"}
+server_filter_tags = {"daily_news", "每日新闻"}
 
--- 配置选项
 configuration_options = {
     {
         name = "event_count",
