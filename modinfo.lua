@@ -5,6 +5,9 @@ description = [[
 
 推荐开荒使用 We recommend using it for The first time 
 
+因为现版本新闻过于少且全是生成事件，在家的时候就容易乱糟糟，好在新闻播放是每天白天延迟播放，可以在跳出右上角科学机器的时候离开基地。
+Because the current version of the news is too limited and all are generated events, it can easily become chaotic when at home. Fortunately, the news is broadcast at a delayed time during the daytime, allowing one to leave the base when the scientific machine pops up in the upper right corner.
+
 ]]
 author = "橙小幸"
 version = "0.6.5"
