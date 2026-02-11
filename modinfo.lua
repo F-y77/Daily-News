@@ -1,7 +1,22 @@
 name = "每日新闻 (Daily News)"
-description = "每天白天在聊天框显示新闻，预告当天会发生的特殊事件。30种不同事件，包含生物、资源、食物、稀有材料等。\n\nDisplays daily news in chat during daytime, announcing special events that will happen today. 30 different events including creatures, resources, food, and rare materials."
+description = [[
+
+每天白天在聊天框显示新闻，预告当天会发生的特殊事件。60种不同事件。
+Displays daily news in chat during daytime. 60 different events.
+
+非常抱歉出现一个非常严重的BUG，现在已修复，我会补偿额外的模组更新。
+
+VERY SORRY ITS A BIG BUG /I FIX IT AND ADD EXTRA MOD UPDATE.
+
+推荐开荒使用 We recommend using it for The first time. 
+
+因为现版本新闻过于少且全是生成事件，在家的时候就容易乱糟糟，好在新闻播放是每天白天延迟播放，可以在跳出右上角科学机器的时候离开基地。
+Because the current version of the news is too limited and all are generated events, it can easily become chaotic when at home. Fortunately, the news is broadcast at a delayed time during the daytime, allowing one to leave the base when the scientific machine pops up in the upper right corner.
+
+]]
+
 author = "橙小幸"
-version = "0.5.0"
+version = "0.6.0"
 
 forumthread = ""
 api_version = 10
@@ -16,9 +31,8 @@ server_only_mod = true
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
 
-server_filter_tags = {"daily", "news", "events"}
+server_filter_tags = {"daily_news", "每日新闻", "events"}
 
--- 配置选项
 configuration_options = {
     {
         name = "event_count",

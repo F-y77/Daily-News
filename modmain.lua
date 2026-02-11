@@ -1,5 +1,4 @@
-
-GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL, k) end })
+﻿GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL, k) end })
 
 local EVENT_COUNT = 1
 local NEWS_STYLE = "formal"
@@ -9,9 +8,7 @@ local function GetConfig()
     NEWS_STYLE = GetModConfigData("news_style") or "formal"
 end
 
--- 新闻事件列表（
 local NEWS_EVENTS = {
-    -- 1. 生物生成类
     {
         news = {
             formal = "【青蛙雨季】今天会有大量青蛙出现！",
@@ -32,7 +29,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 2. 蝴蝶生成
     {
         news = {
             formal = "【蝴蝶漫舞】今天会有大量蝴蝶出现！",
@@ -53,7 +49,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 3. 火鸡生成
     {
         news = {
             formal = "【火鸡盛宴】今天火鸡出现数量大幅增加！",
@@ -74,7 +69,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 4. 企鹅生成
     {
         news = {
             formal = "【企鹅聚会】今天企鹅出现数量增加！",
@@ -95,7 +89,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 5. 花朵生成
     {
         news = {
             formal = "【花朵盛开】今天地图上会生成大量花朵！",
@@ -116,7 +109,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 6. 燧石生成
     {
         news = {
             formal = "【燧石富矿】今天地面上会生成更多燧石！",
@@ -137,7 +129,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 7. 树枝生成
     {
         news = {
             formal = "【树枝丰收】今天地面上会生成更多树枝！",
@@ -158,7 +149,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 8. 草生成
     {
         news = {
             formal = "【草木繁盛】今天地面上会生成更多草！",
@@ -179,7 +169,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 9. 浆果生成
     {
         news = {
             formal = "【浆果丰收】今天地面上会生成更多浆果！",
@@ -200,7 +189,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 10. 胡萝卜生成
     {
         news = {
             formal = "【胡萝卜丰收】今天地面上会生成更多胡萝卜！",
@@ -221,7 +209,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 11. 蜜蜂生成
     {
         news = {
             formal = "【蜜蜂狂欢】今天会有大量蜜蜂飞舞！",
@@ -242,7 +229,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 12. 蜘蛛生成
     {
         news = {
             formal = "【蜘蛛出没】今天蜘蛛活动频繁，小心应对！",
@@ -263,7 +249,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 13. 兔子生成
     {
         news = {
             formal = "【兔子繁殖季】今天兔子数量激增！",
@@ -284,7 +269,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 14. 鼹鼠生成
     {
         news = {
             formal = "【鼹鼠活跃日】今天鼹鼠频繁出没！",
@@ -305,7 +289,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 15. 金块生成
     {
         news = {
             formal = "【黄金时代】今天地面上会出现黄金！",
@@ -326,7 +309,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 16. 木头生成
     {
         news = {
             formal = "【木材富足】今天地面上会出现大量木头！",
@@ -347,7 +329,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 17. 石头生成
     {
         news = {
             formal = "【岩石遍地】今天地面上会出现大量石头！",
@@ -368,7 +349,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 18. 蘑菇生成
     {
         news = {
             formal = "【蘑菇大爆发】今天会长出大量蘑菇！",
@@ -390,7 +370,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 19. 种子生成
     {
         news = {
             formal = "【种子丰收】今天地面上会出现大量种子！",
@@ -411,7 +390,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 20. 蜂蜜生成
     {
         news = {
             formal = "【蜂蜜流淌】今天会出现大量蜂蜜！",
@@ -432,7 +410,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 21. 肉类生成
     {
         news = {
             formal = "【肉食盛宴】今天会出现大量肉类！",
@@ -453,7 +430,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 22. 鸟蛋生成
     {
         news = {
             formal = "【鸟蛋遍地】今天会出现大量鸟蛋！",
@@ -474,7 +450,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 23. 曼德拉草生成
     {
         news = {
             formal = "【曼德拉草现身】今天会出现珍稀的曼德拉草！",
@@ -495,7 +470,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 24. 齿轮生成
     {
         news = {
             formal = "【机械零件】今天会出现珍贵的齿轮！",
@@ -516,7 +490,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 25. 猪皮生成
     {
         news = {
             formal = "【猪皮丰收】今天会出现大量猪皮！",
@@ -537,7 +510,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 26. 蜘蛛丝生成
     {
         news = {
             formal = "【蜘蛛丝飘飘】今天会出现大量蜘蛛丝！",
@@ -558,7 +530,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 27. 噩梦燃料生成
     {
         news = {
             formal = "【暗影涌动】今天会出现神秘的噩梦燃料！",
@@ -579,7 +550,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 28. 冰块生成
     {
         news = {
             formal = "【冰雪降临】今天会出现大量冰块！",
@@ -600,7 +570,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 29. 松果生成
     {
         news = {
             formal = "【松果满地】今天会出现大量松果！",
@@ -621,7 +590,6 @@ local NEWS_EVENTS = {
         target = "world"
     },
     
-    -- 30. 宝石雨
     {
         news = {
             formal = "【宝石奇迹】今天会出现珍贵的宝石！",
@@ -648,7 +616,6 @@ local NEWS_EVENTS = {
 local current_events = {}
 local last_day = -1 --一天时间生成 每天白天记录
 
--- 随机选择指定数量的事件
 local function SelectDailyEvents()
     local selected = {}
     local available = {}
@@ -657,7 +624,6 @@ local function SelectDailyEvents()
         table.insert(available, i)
     end
     
-    -- 随机选择EVENT_COUNT个不同的事件
     for i = 1, math.min(EVENT_COUNT, #available) do
         if #available > 0 then
             local index = math.random(1, #available)
@@ -669,21 +635,18 @@ local function SelectDailyEvents()
     return selected
 end
 
--- 在聊天框显示新闻
 local function AnnounceNews(news_text)
     if TheWorld.ismastersim then
         TheNet:Announce(news_text)
     end
 end
 
--- 应用事件效果
 local function ApplyEventEffects(event)
     if event.effect then
         event.effect()
     end
 end
 
--- 获取新闻文本（根据风格）
 local function GetNewsText(event)
     if type(event.news) == "table" then
         return event.news[NEWS_STYLE] or event.news.formal
@@ -692,18 +655,15 @@ local function GetNewsText(event)
     end
 end
 
--- 检查并触发每日新闻
 local function CheckDailyNews()
     if not TheWorld.ismastersim then return end
     
     local current_day = TheWorld.state.cycles
     
-    -- 新的一天开始
     if current_day ~= last_day and TheWorld.state.isday then
         last_day = current_day
         current_events = SelectDailyEvents()
         
-        -- 延迟几秒后播报新闻
         TheWorld:DoTaskInTime(3, function()
             AnnounceNews("================   每日新闻 Daily News   ================")
             
@@ -722,18 +682,12 @@ local function CheckDailyNews()
     end
 end
 
--- 添加世界组件监听
 AddPrefabPostInit("world", function(inst)
     if not TheWorld.ismastersim then return end
     
-    -- 获取配置
     GetConfig()
     
-    -- 每30秒检查一次
     inst:DoPeriodicTask(30, CheckDailyNews)
     
-    -- 立即检查一次
     inst:DoTaskInTime(5, CheckDailyNews)
 end)
-
-print("每日新闻模组已加载！Daily News Mod Loaded!")
