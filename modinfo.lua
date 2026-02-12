@@ -1,12 +1,13 @@
+local MOD_VERSION = "0.6.2"
+
 name = "每日新闻 (Daily News)"
 description = [[
 
-每天白天在聊天框显示新闻，预告当天会发生的特殊事件。60种不同事件。
-Displays daily news in chat during daytime. 60 different events.
+每天白天在聊天框显示新闻，预告当天会发生的特殊事件。50种不同事件。
+Displays daily news in chat during daytime. 50 different events.
 
-非常抱歉出现一个非常严重的BUG，现在已修复，我会补偿额外的模组更新。
+版本 Version: ]]..MOD_VERSION..[[
 
-VERY SORRY ITS A BIG BUG /I FIX IT AND ADD EXTRA MOD UPDATE.
 
 推荐开荒使用 We recommend using it for The first time. 
 
@@ -16,7 +17,7 @@ Because the current version of the news is too limited and all are generated eve
 ]]
 
 author = "橙小幸"
-version = "0.6.0"
+version = MOD_VERSION
 
 forumthread = ""
 api_version = 10
@@ -53,6 +54,6 @@ configuration_options = {
             {description = "正式播报", data = "formal"},
             {description = "调皮趣味", data = "playful"},
         },
-        default = "playful",
+        default = "formal",
     },
 }

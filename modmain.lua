@@ -610,6 +610,366 @@ local NEWS_EVENTS = {
         end,
         target = "world"
     },
+    
+    {
+        news = {
+            formal = "【萤火虫之夜】今天晚上会有大量萤火虫出现！",
+            playful = "【小灯笼飞呀飞】晚上到处都是萤火虫，亮晶晶的超漂亮！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local firefly = SpawnPrefab("fireflies")
+                    if firefly then
+                        firefly.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【高鸟蛋现世】今天会出现珍贵的高鸟蛋！",
+            playful = "【大鸟蛋来啦】高鸟蛋出现了，小心高鸟追你哦！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 3 do
+                    local talbirdegg = SpawnPrefab("tallbirdegg")
+                    if talbirdegg then
+                        talbirdegg.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【蜂巢丰收】今天会出现蜂巢和蜂窝！",
+            playful = "【蜜蜂的家】到处都是蜂巢，小心被蜜蜂蜇哦！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 4 do
+                    local honeycomb = SpawnPrefab("honeycomb")
+                    if honeycomb then
+                        honeycomb.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【怪物肉堆积】今天会出现大量怪物肉！",
+            playful = "【黑黑的肉】到处都是怪物肉，喂猪人正好！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 10 do
+                    local monstermeat = SpawnPrefab("monstermeat")
+                    if monstermeat then
+                        monstermeat.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【鱼人出没】今天鱼人活动频繁！",
+            playful = "【鱼鱼人来了】鱼人们今天组团出门，小心被围攻！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 6 do
+                    local merm = SpawnPrefab("merm")
+                    if merm then
+                        merm.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【猪人聚会】今天猪人数量增加！",
+            playful = "【猪猪开派对】猪人们今天开大会，可以招募好多帮手啦！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 5 do
+                    local pig = SpawnPrefab("pigman")
+                    if pig then
+                        pig.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【木炭丰收】今天会出现大量木炭！",
+            playful = "【黑黑的炭】到处都是木炭，做火药做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 15 do
+                    local charcoal = SpawnPrefab("charcoal")
+                    if charcoal then
+                        charcoal.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【硝石富矿】今天会出现大量硝石！",
+            playful = "【黄色石头】到处都是硝石，做火药做炸药随便做！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local nitre = SpawnPrefab("nitre")
+                    if nitre then
+                        nitre.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【芦苇丛生】今天会出现大量芦苇！",
+            playful = "【芦苇满地长】到处都是芦苇，做纸做到停不下来！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 10 do
+                    local cutreeds = SpawnPrefab("cutreeds")
+                    if cutreeds then
+                        cutreeds.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【猎犬来袭】今天会有猎犬群出现，注意防御！",
+            playful = "【汪汪队出动】一群凶猛的狗狗要来了，快准备武器！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 5 do
+                    local hound = SpawnPrefab("hound")
+                    if hound then
+                        hound.Transform:SetPosition(x + math.random(-15, 15), 0, z + math.random(-15, 15))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【触手危机】今天会有触手从地下冒出！",
+            playful = "【章鱼脚出没】小心地上的触手，会把你抓住打！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 6 do
+                    local tentacle = SpawnPrefab("tentacle")
+                    if tentacle then
+                        tentacle.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【蜘蛛战士】今天会出现强大的蜘蛛战士！",
+            playful = "【大蜘蛛来了】超大只的蜘蛛战士出现了，快跑啊！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 4 do
+                    local spiderwarrior = SpawnPrefab("spider_warrior")
+                    if spiderwarrior then
+                        spiderwarrior.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【发条骑士】今天会有发条骑士出现！",
+            playful = "【机器人来了】叮叮当当的发条骑士要来打架了！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 3 do
+                    local knight = SpawnPrefab("knight")
+                    if knight then
+                        knight.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【发条主教】今天会有发条主教出现！",
+            playful = "【激光炮来了】会发射激光的主教机器人出现了！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 3 do
+                    local bishop = SpawnPrefab("bishop")
+                    if bishop then
+                        bishop.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【发条战车】今天会有发条战车出现！",
+            playful = "【小坦克来了】会冲撞的战车机器人出现了，小心被撞飞！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 2 do
+                    local rook = SpawnPrefab("rook")
+                    if rook then
+                        rook.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【暗影怪物】今天理智值下降时会出现更多暗影生物！",
+            playful = "【小黑人来了】今天暗影怪物特别多，保持理智很重要！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 4 do
+                    local shadowcreature = SpawnPrefab("crawlinghorror")
+                    if shadowcreature then
+                        shadowcreature.Transform:SetPosition(x + math.random(-15, 15), 0, z + math.random(-15, 15))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【杀人蜂群】今天会有危险的杀人蜂出现！",
+            playful = "【红眼蜜蜂】杀人蜂来了，被蜇到会很痛的！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 8 do
+                    local killerbee = SpawnPrefab("killerbee")
+                    if killerbee then
+                        killerbee.Transform:SetPosition(x + math.random(-15, 15), 0, z + math.random(-15, 15))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【蚊子成灾】今天会有大量蚊子出现！",
+            playful = "【嗡嗡嗡吸血】讨厌的蚊子要来吸血了，快躲开！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 10 do
+                    local mosquito = SpawnPrefab("mosquito")
+                    if mosquito then
+                        mosquito.Transform:SetPosition(x + math.random(-15, 15), 0, z + math.random(-15, 15))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
 }
 
 
