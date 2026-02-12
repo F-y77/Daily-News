@@ -1,11 +1,11 @@
 GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL, k) end })
 
 local EVENT_COUNT = 1
-local NEWS_STYLE = "playful"
+local NEWS_STYLE = "formal"
 
 local function GetConfig()
     EVENT_COUNT = GetModConfigData("event_count") or 1
-    NEWS_STYLE = GetModConfigData("news_style") or "playful"
+    NEWS_STYLE = GetModConfigData("news_style") or "formal"
 end
 
 local NEWS_EVENTS = {
