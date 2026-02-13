@@ -1,17 +1,15 @@
-local MOD_VERSION = "0.6.3"
+local MOD_VERSION = "0.6.7"
 
-name = "每日新闻 (Daily News)"
+name = "每日新闻"
 description = [[
 每天白天播报新闻，预告特殊事件。
-Displays daily news and special events.
 
-版本 Version: ]]..MOD_VERSION..[[
+版本: ]]..MOD_VERSION..[[
 
-50种事件 (40正面 + 10负面)
-50 Events (40 Positive + 10 Negative)
+70种事件 (50正面 + 10负面 + 10中立)
+其中10个属性增益事件
 
 推荐开荒使用
-Recommended for new games
 ]]
 
 author = "橙小幸"
@@ -46,7 +44,7 @@ configuration_options = {
     {
         name = "event_count",
         label = "每日事件数量",
-        hover = "每天播报的新闻事件数量\nNumber of news events per day",
+        hover = "每天播报的新闻事件数量",
         options = {
             {description = "1个事件", data = 1},
             {description = "2个事件", data = 2},
@@ -57,7 +55,7 @@ configuration_options = {
     {
         name = "news_style",
         label = "新闻播报风格",
-        hover = "选择新闻播报的语言风格\nChoose the news broadcast style",
+        hover = "选择新闻播报的语言风格",
         options = {
             {description = "正式播报", data = "formal"},
             {description = "调皮趣味", data = "playful"},
@@ -67,6 +65,6 @@ configuration_options = {
     
     Title(""),
     Title("===== 模组信息 ====="),
-    Title("版本: "..MOD_VERSION.." | 事件: 50"),
-    Title("正面: 40 | 负面: 10"),
+    Title("版本: "..MOD_VERSION.." | 事件: 80"),
+    Title("正面: 60 | 负面: 10 | 中立: 10"),
 }

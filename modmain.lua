@@ -970,11 +970,482 @@ local NEWS_EVENTS = {
         end,
         target = "world"
     },
+    
+    {
+        news = {
+            formal = "【活木奇迹】今天会出现珍贵的活木！",
+            playful = "【会动的木头】活木出现啦，做魔法装备的好材料！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 6 do
+                    local livinglog = SpawnPrefab("livinglog")
+                    if livinglog then
+                        livinglog.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【紫宝石富矿】今天会出现大量紫宝石！",
+            playful = "【紫色闪闪】到处都是紫宝石，做传送杖做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 5 do
+                    local purplegem = SpawnPrefab("purplegem")
+                    if purplegem then
+                        purplegem.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【红宝石富矿】今天会出现大量红宝石！",
+            playful = "【红色闪闪】到处都是红宝石，做火魔杖做到手软！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 5 do
+                    local redgem = SpawnPrefab("redgem")
+                    if redgem then
+                        redgem.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【蓝宝石富矿】今天会出现大量蓝宝石！",
+            playful = "【蓝色闪闪】到处都是蓝宝石，做冰魔杖做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 5 do
+                    local bluegem = SpawnPrefab("bluegem")
+                    if bluegem then
+                        bluegem.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【牛角丰收】今天会出现大量牛角！",
+            playful = "【牛牛的角】到处都是牛角，做牛角帽做到停不下来！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 6 do
+                    local horn = SpawnPrefab("horn")
+                    if horn then
+                        horn.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【羽毛飘飘】今天会出现大量羽毛！",
+            playful = "【羽毛满天飞】到处都是羽毛，做飞镖做到手软！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local feather = SpawnPrefab("feather_crow")
+                    if feather then
+                        feather.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【蜂王浆现世】今天会出现珍贵的蜂王浆！",
+            playful = "【超级蜂蜜】蜂王浆出现了，吃了加好多血！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 4 do
+                    local royaljelly = SpawnPrefab("royaljelly")
+                    if royaljelly then
+                        royaljelly.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【大肉丰收】今天会出现大量大肉！",
+            playful = "【大块肉肉】到处都是大肉，吃肉吃到撑！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 10 do
+                    local meat = SpawnPrefab("meat")
+                    if meat then
+                        meat.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【鱼类丰收】今天会出现大量鱼肉！",
+            playful = "【鱼鱼满地】到处都是鱼，做鱼排做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local fish = SpawnPrefab("fish")
+                    if fish then
+                        fish.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【鳗鱼盛宴】今天会出现大量鳗鱼！",
+            playful = "【长长的鱼】到处都是鳗鱼，做鳗鱼料理超好吃！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 8 do
+                    local eel = SpawnPrefab("eel")
+                    if eel then
+                        eel.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【天气预报】今天天气晴朗，适合外出探险。",
+            playful = "【好天气】今天阳光明媚，出门玩耍的好日子！"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【生态观察】今天森林中的生物活动正常。",
+            playful = "【平平无奇】今天一切都很平常，没什么特别的。"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【地质报告】今天地质活动稳定，无异常现象。",
+            playful = "【大地安静】今天地面很安静，没有地震也没有塌陷。"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【植被调查】今天植物生长状况良好。",
+            playful = "【花花草草】今天的花草树木都长得好好的。"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【气象观测】今天风力适中，温度适宜。",
+            playful = "【不冷不热】今天温度刚刚好，很舒服的一天。"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【资源统计】今天各类资源储备充足。",
+            playful = "【东西够用】今天资源都够用，不用担心缺东西。"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【安全提示】今天请注意保持警惕，做好防护。",
+            playful = "【小心点哦】今天记得带好装备，安全第一！"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【环境监测】今天环境指数正常，空气清新。",
+            playful = "【空气真好】今天空气很清新，深呼吸感觉真棒！"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【生物多样性】今天观察到多种生物和谐共存。",
+            playful = "【动物们很和平】今天动物们都很乖，没有打架。"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【日常提醒】今天是普通的一天，祝您生存愉快。",
+            playful = "【平凡的一天】今天没什么特别的，好好享受生活吧！"
+        },
+        effect = function()
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【精神焕发】今天所有玩家理智值恢复！",
+            playful = "【脑子清醒】今天脑子特别清醒，理智值满满！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player and player.components.sanity then
+                    player.components.sanity:SetPercent(1)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【体力充沛】今天所有玩家饥饿值恢复！",
+            playful = "【吃得饱饱】今天肚子吃得饱饱的，不用担心饿肚子！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player and player.components.hunger then
+                    player.components.hunger:SetPercent(1)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【生命旺盛】今天所有玩家生命值恢复！",
+            playful = "【满血复活】今天血量满满的，精神抖擞！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player and player.components.health then
+                    player.components.health:SetPercent(1)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【白昼延长】今天白天时间延长50%！",
+            playful = "【太阳不想下班】今天太阳多待一会儿，白天变长啦！"
+        },
+        effect = function()
+            if TheWorld and TheWorld.components.clock then
+                local clock = TheWorld.components.clock
+                local current_segs = clock:GetTimeLeftInEra()
+                clock:SetSegs("day", clock:GetDaySegs() * 1.5)
+            end
+        end,
+        target = "world"
+    },
+    
+    {
+        news = {
+            formal = "【移动加速】今天所有玩家移动速度提升！",
+            playful = "【跑得飞快】今天脚底生风，跑得超级快！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player and player.components.locomotor then
+                    player.components.locomotor:SetExternalSpeedMultiplier(player, "daily_news_speed", 1.3)
+                    player:DoTaskInTime(480, function()
+                        if player and player.components.locomotor then
+                            player.components.locomotor:RemoveExternalSpeedMultiplier(player, "daily_news_speed")
+                        end
+                    end)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【工作效率】今天所有玩家工作速度提升！",
+            playful = "【手速超快】今天手速飞快，干活效率翻倍！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player and player.components.worker then
+                    player.components.worker:SetAction(player.components.worker.action, 1.5)
+                    player:DoTaskInTime(480, function()
+                        if player and player.components.worker then
+                            player.components.worker:SetAction(player.components.worker.action, 1)
+                        end
+                    end)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【温度适宜】今天所有玩家体温恢复正常！",
+            playful = "【不冷不热】今天体温刚刚好，舒服极了！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player and player.components.temperature then
+                    player.components.temperature:SetTemperature(35)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【潮湿消散】今天所有玩家身上的潮湿度清除！",
+            playful = "【瞬间变干】今天身上的水分都蒸发了，干干爽爽！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player and player.components.moisture then
+                    player.components.moisture:SetPercent(0)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【经验加成】今天所有玩家获得经验加成！",
+            playful = "【升级快快】今天做什么都能学到更多东西！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player.components.builder then
+                    local old_bonus = player.components.builder.science_bonus or 0
+                    player.components.builder.science_bonus = old_bonus + 2
+                    player:DoTaskInTime(480, function()
+                        if player and player.components.builder then
+                            player.components.builder.science_bonus = old_bonus
+                        end
+                    end)
+                end
+            end
+        end,
+        target = "player"
+    },
+    
+    {
+        news = {
+            formal = "【幸运降临】今天所有玩家幸运值提升！",
+            playful = "【好运连连】今天运气爆棚，做什么都顺利！"
+        },
+        effect = function()
+            for i, player in ipairs(AllPlayers) do
+                if player.components.combat then
+                    player.components.combat.damagemultiplier = (player.components.combat.damagemultiplier or 1) * 1.2
+                    player:DoTaskInTime(480, function()
+                        if player and player.components.combat then
+                            player.components.combat.damagemultiplier = (player.components.combat.damagemultiplier or 1.2) / 1.2
+                        end
+                    end)
+                end
+            end
+        end,
+        target = "player"
+    },
 }
 
 
 local current_events = {}
-local last_day = -1 --一天时间生成 每天白天记录
+local last_day = -1
 
 local function SelectDailyEvents()
     local selected = {}
