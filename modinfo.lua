@@ -1,4 +1,4 @@
-local MOD_VERSION = "0.7.0"
+local MOD_VERSION = "0.7.1"
 
 name = "每日新闻"
 description = [[
@@ -96,7 +96,7 @@ configuration_options = {
             {description = "启用", data = true},
             {description = "禁用", data = false},
         },
-        default = true,
+        default = false,
     },
     {
         name = "enable_neutral",
@@ -106,7 +106,7 @@ configuration_options = {
             {description = "启用", data = true},
             {description = "禁用", data = false},
         },
-        default = true,
+        default = false,
     },
     
     Title(""),
@@ -121,7 +121,7 @@ configuration_options = {
             {description = "大方", data = "elegant"},
             {description = "庄重", data = "solemn"},
         },
-        default = "beautiful",
+        default = "simple",
     },
     
     Title(""),
@@ -134,21 +134,21 @@ configuration_options = {
             {description = "启用", data = true},
             {description = "禁用", data = false},
         },
-        default = true,
+        default = false,
     },
     {
         name = "warning_time",
         label = "预警提前时间",
         hover = "新闻播报前多少帧进行预警",
         options = {
-            {description = "10秒", data = 10},
-            {description = "20秒", data = 20},
-            {description = "30秒", data = 30},
-            {description = "40秒", data = 40},
-            {description = "50秒", data = 50},
-            {description = "60秒", data = 60},
+            {description = "10", data = 10},
+            {description = "20", data = 20},
+            {description = "30", data = 30},
+            {description = "40", data = 40},
+            {description = "50", data = 50},
+            {description = "60", data = 60},
         },
-        default = 30,
+        default = 60,
     },
     
     Title(""),
