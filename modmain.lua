@@ -2,10 +2,44 @@ GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL,
 
 local EVENT_COUNT = 3
 local NEWS_STYLE = "formal"
+local NEWS_INTERVAL = 1
+local ENABLE_NEGATIVE = true
+local ENABLE_NEUTRAL = false
+local NEWS_HEADER = "beautiful"
+local ENABLE_WARNING = true
+local WARNING_TIME = 30
+
+local NEWS_HEADERS = {
+    beautiful = {
+        top = "═══════════════   每日新闻   ═══════════════",
+        bottom = "═══════════════════════════════════════════════"
+    },
+    simple = {
+        top = "───────────────   每日新闻   ───────────────",
+        bottom = "───────────────────────────────────────────────"
+    },
+    elegant = {
+        top = "━━━━━━━━━━━━━━━   每日新闻   ━━━━━━━━━━━━━━━",
+        bottom = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    },
+    solemn = {
+        top = "■■■■■■■■■   每日新闻   ■■■■■■■■■",
+        bottom = "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"
+    }
+}
 
 local function GetConfig()
     EVENT_COUNT = GetModConfigData("event_count") or 3
     NEWS_STYLE = GetModConfigData("news_style") or "formal"
+    NEWS_INTERVAL = GetModConfigData("news_interval") or 1
+    ENABLE_NEGATIVE = GetModConfigData("enable_negative")
+    if ENABLE_NEGATIVE == nil then ENABLE_NEGATIVE = true end
+    ENABLE_NEUTRAL = GetModConfigData("enable_neutral")
+    if ENABLE_NEUTRAL == nil then ENABLE_NEUTRAL = false end
+    NEWS_HEADER = GetModConfigData("news_header") or "beautiful"
+    ENABLE_WARNING = GetModConfigData("enable_warning")
+    if ENABLE_WARNING == nil then ENABLE_WARNING = true end
+    WARNING_TIME = GetModConfigData("warning_time") or 30
 end
 
 local NEWS_EVENTS = {
@@ -26,7 +60,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -46,7 +80,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -66,7 +100,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -86,7 +120,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -106,7 +140,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -126,7 +160,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -146,7 +180,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -166,7 +200,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -186,7 +220,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -206,7 +240,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -226,7 +260,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -246,7 +280,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -266,7 +300,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -286,7 +320,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -306,7 +340,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -326,7 +360,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -346,7 +380,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -367,7 +401,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -387,7 +421,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -407,7 +441,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -427,7 +461,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -447,7 +481,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -467,7 +501,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -487,7 +521,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -507,7 +541,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -527,7 +561,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -547,7 +581,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -567,7 +601,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -587,7 +621,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -608,7 +642,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -628,7 +662,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -648,7 +682,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -668,7 +702,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -688,7 +722,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -708,7 +742,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -728,7 +762,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -748,7 +782,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -768,7 +802,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -788,7 +822,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -808,7 +842,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -828,7 +862,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -848,7 +882,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -868,7 +902,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -888,7 +922,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -908,7 +942,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -928,7 +962,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -948,7 +982,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -968,7 +1002,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "negative"
     },
     
     {
@@ -988,7 +1022,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1008,7 +1042,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1028,7 +1062,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1048,7 +1082,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1068,7 +1102,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1088,7 +1122,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1108,7 +1142,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1128,7 +1162,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1148,7 +1182,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1168,7 +1202,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1178,7 +1212,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1188,7 +1222,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1198,7 +1232,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1208,7 +1242,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1218,7 +1252,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1228,7 +1262,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1238,7 +1272,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1248,7 +1282,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1258,7 +1292,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1268,7 +1302,7 @@ local NEWS_EVENTS = {
         },
         effect = function()
         end,
-        target = "world"
+        event_type = "neutral"
     },
     
     {
@@ -1283,7 +1317,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1298,7 +1332,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1313,7 +1347,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1328,7 +1362,7 @@ local NEWS_EVENTS = {
                 clock:SetSegs("day", clock:GetDaySegs() * 1.5)
             end
         end,
-        target = "world"
+        event_type = "positive"
     },
     
     {
@@ -1348,7 +1382,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1368,7 +1402,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1383,7 +1417,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1398,7 +1432,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1419,7 +1453,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
     
     {
@@ -1439,7 +1473,7 @@ local NEWS_EVENTS = {
                 end
             end
         end,
-        target = "player"
+        event_type = "positive"
     },
 }
 
@@ -1452,7 +1486,17 @@ local function SelectDailyEvents()
     local available = {}
     
     for i, event in ipairs(NEWS_EVENTS) do
-        table.insert(available, i)
+        local should_add = true
+        
+        if event.event_type == "negative" and not ENABLE_NEGATIVE then
+            should_add = false
+        elseif event.event_type == "neutral" and not ENABLE_NEUTRAL then
+            should_add = false
+        end
+        
+        if should_add then
+            table.insert(available, i)
+        end
     end
     
     for i = 1, math.min(EVENT_COUNT, #available) do
@@ -1491,12 +1535,20 @@ local function CheckDailyNews()
     
     local current_day = TheWorld.state.cycles
     
-    if current_day ~= last_day and TheWorld.state.isday then
+    if current_day ~= last_day and TheWorld.state.isday and (current_day % NEWS_INTERVAL == 0) then
         last_day = current_day
         current_events = SelectDailyEvents()
         
+        local header_style = NEWS_HEADERS[NEWS_HEADER] or NEWS_HEADERS["beautiful"]
+        
+        if ENABLE_WARNING and WARNING_TIME > 0 then
+            TheWorld:DoTaskInTime(3 - WARNING_TIME, function()
+                AnnounceNews("【预警】每日新闻将在 " .. WARNING_TIME .. " 秒后播报！")
+            end)
+        end
+        
         TheWorld:DoTaskInTime(3, function()
-            AnnounceNews("================   每日新闻 Daily News   ================")
+            AnnounceNews(header_style.top)
             
             for i, event in ipairs(current_events) do
                 TheWorld:DoTaskInTime(i * 2, function()
@@ -1507,7 +1559,7 @@ local function CheckDailyNews()
             end
             
             TheWorld:DoTaskInTime((#current_events + 1) * 2, function()
-                AnnounceNews("====================================================")
+                AnnounceNews(header_style.bottom)
             end)
         end)
     end
