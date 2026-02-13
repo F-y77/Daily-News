@@ -3,28 +3,28 @@ GLOBAL.setmetatable(env, { __index = function(t, k) return GLOBAL.rawget(GLOBAL,
 local EVENT_COUNT = 3
 local NEWS_STYLE = "formal"
 local NEWS_INTERVAL = 1
-local ENABLE_NEGATIVE = true
+local ENABLE_NEGATIVE = false
 local ENABLE_NEUTRAL = false
-local NEWS_HEADER = "beautiful"
-local ENABLE_WARNING = true
-local WARNING_TIME = 30
+local NEWS_HEADER = "elegant"
+local ENABLE_WARNING = false
+local WARNING_TIME = 60
 
 local NEWS_HEADERS = {
     beautiful = {
-        top = "═════════════════════   每日新闻   ═════════════════════",
-        bottom = "═════════════════════════════════════════════════════════"
+        top = "═══════════════   每日新闻   ═══════════════",
+        bottom = "════════════════════════════════════"
     },
     simple = {
-        top = "─────────────────────   每日新闻   ─────────────────────",
-        bottom = "─────────────────────────────────────────────────────────"
+        top = "───────────────   每日新闻   ───────────────",
+        bottom = "────────────────────────────────────"
     },
     elegant = {
-        top = "━━━━━━━━━━━━━━━━━━━━━   每日新闻   ━━━━━━━━━━━━━━━━━━━━━",
-        bottom = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        top = "━━━━━━━━━━━━━━━   每日新闻   ━━━━━━━━━━━━━━━",
+        bottom = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     },
     solemn = {
-        top = "■■■■■■■■■■■■■■■■■■■■■   每日新闻   ■■■■■■■■■■■■■■■■■■■■■",
-        bottom = "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"
+        top = "■■■■■■■■■■■■■■■   每日新闻   ■■■■■■■■■■■■■■■",
+        bottom = "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"
     }
 }
 
@@ -33,13 +33,13 @@ local function GetConfig()
     NEWS_STYLE = GetModConfigData("news_style") or "formal"
     NEWS_INTERVAL = GetModConfigData("news_interval") or 1
     ENABLE_NEGATIVE = GetModConfigData("enable_negative")
-    if ENABLE_NEGATIVE == nil then ENABLE_NEGATIVE = true end
+    if ENABLE_NEGATIVE == nil then ENABLE_NEGATIVE = false end
     ENABLE_NEUTRAL = GetModConfigData("enable_neutral")
     if ENABLE_NEUTRAL == nil then ENABLE_NEUTRAL = false end
-    NEWS_HEADER = GetModConfigData("news_header") or "beautiful"
+    NEWS_HEADER = GetModConfigData("news_header") or "elegant"
     ENABLE_WARNING = GetModConfigData("enable_warning")
-    if ENABLE_WARNING == nil then ENABLE_WARNING = true end
-    WARNING_TIME = GetModConfigData("warning_time") or 30
+    if ENABLE_WARNING == nil then ENABLE_WARNING = false end
+    WARNING_TIME = GetModConfigData("warning_time") or 60
 end
 
 local NEWS_EVENTS = {

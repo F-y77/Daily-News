@@ -7,7 +7,8 @@ description = [[
 版本: ]]..MOD_VERSION..[[
 
 80种事件 (60正面 + 10负面 + 10中立)
-其中10个属性增益事件
+
+请大家看一下自定义喵~
 
 推荐开荒使用
 ]]
@@ -138,7 +139,7 @@ configuration_options = {
     {
         name = "warning_time",
         label = "预警提前时间",
-        hover = "新闻播报前多少秒进行预警",
+        hover = "新闻播报前多少帧进行预警",
         options = {
             {description = "10秒", data = 10},
             {description = "20秒", data = 20},
@@ -154,9 +155,9 @@ configuration_options = {
     Title("========== 模组信息 =========="),
     Title("版本: "..MOD_VERSION.." | 事件: 80"),
     Title("正面: 60 | 负面: 10 | 中立: 10"),
-    Title("祝大家新年快乐，这是最近最后的一版了，不会在频繁更新了。")
-    Title("作者：橙小幸")
-    Title("Q群:1042944194 欢迎饥荒联机交流。")
+    Title("祝大家新年快乐，恭喜发财。"),
+    Title("作者：橙小幸"),
+    Title("Q群:1042944194 欢迎联机交流。"),
     Title("感谢您的大力支持！")
 
 }
