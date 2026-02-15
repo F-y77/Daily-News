@@ -1,4 +1,4 @@
-local MOD_VERSION = "0.7.1"
+local MOD_VERSION = "0.8.0"
 
 name = "每日新闻"
 description = [[
@@ -6,7 +6,7 @@ description = [[
 
 版本: ]]..MOD_VERSION..[[
 
-80种事件 (60正面 + 10负面 + 10中立)
+100种事件 (80正面 + 10负面 + 10中立)
 
 请大家看一下自定义喵~
 
@@ -59,6 +59,34 @@ configuration_options = {
             {description = "10个事件", data = 10},
         },
         default = 3,
+    },
+    {
+        name = "enable_no_repeat",
+        label = "启用新闻不重复",
+        hover = "出现过的新闻达到指定次数后不再出现，如果要禁用的话...（你确定吗？会直接重置新闻！！！）",
+        options = {
+            {description = "启用", data = true},
+            {description = "禁用", data = false},
+        },
+        default = true,
+    },
+    {
+        name = "repeat_limit",
+        label = "新闻重复次数限制",
+        hover = "同一条新闻最多出现几次后不再出现，如果新闻用光了可以增加数量！",
+        options = {
+            {description = "1次", data = 1},
+            {description = "2次", data = 2},
+            {description = "3次", data = 3},
+            {description = "4次", data = 4},
+            {description = "5次", data = 5},
+            {description = "6次", data = 6},
+            {description = "7次", data = 7},
+            {description = "8次", data = 8},
+            {description = "9次", data = 9},
+            {description = "10次", data = 10},
+        },
+        default = 5,
     },
     {
         name = "news_style",
@@ -153,8 +181,8 @@ configuration_options = {
     
     Title(""),
     Title("========== 模组信息 =========="),
-    Title("版本: "..MOD_VERSION.." | 事件: 80"),
-    Title("正面: 60 | 负面: 10 | 中立: 10"),
+    Title("版本: "..MOD_VERSION.." | 事件: 100"),
+    Title("正面: 80 | 负面: 10 | 中立: 10"),
     Title("祝大家新年快乐，恭喜发财。"),
     Title("作者：橙小幸"),
     Title("Q群:1042944194 欢迎联机交流。"),

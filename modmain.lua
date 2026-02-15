@@ -8,11 +8,13 @@ local ENABLE_NEUTRAL = false
 local NEWS_HEADER = "simple"
 local ENABLE_WARNING = false
 local WARNING_TIME = 60
+local ENABLE_NO_REPEAT = true
+local REPEAT_LIMIT = 5
 
 local NEWS_HEADERS = {
     beautiful = {
         top = "═══════════════    每日新闻    ═══════════════",
-        bottom = "═══════════════════════════════════════"
+        bottom = "══════════════════════════════════════════"
     },
     simple = {
         top = "───────────────────────────────────────",
@@ -20,11 +22,11 @@ local NEWS_HEADERS = {
     },
     elegant = {
         top = "━━━━━━━━━━━━━━━    每日新闻    ━━━━━━━━━━━━━━━",
-        bottom = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        bottom = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     },
     solemn = {
         top = "■■■■■■■■■■■■■■■    每日新闻    ■■■■■■■■■■■■■■■",
-        bottom = "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"
+        bottom = "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"
     }
 }
 
@@ -40,6 +42,9 @@ local function GetConfig()
     ENABLE_WARNING = GetModConfigData("enable_warning")
     if ENABLE_WARNING == nil then ENABLE_WARNING = false end
     WARNING_TIME = GetModConfigData("warning_time") or 60
+    ENABLE_NO_REPEAT = GetModConfigData("enable_no_repeat")
+    if ENABLE_NO_REPEAT == nil then ENABLE_NO_REPEAT = true end
+    REPEAT_LIMIT = GetModConfigData("repeat_limit") or 5
 end
 
 local NEWS_EVENTS = {
@@ -1475,11 +1480,412 @@ local NEWS_EVENTS = {
         end,
         event_type = "positive"
     },
+    
+    {
+        news = {
+            formal = "【海象出没】今天会有海象猎人出现！",
+            playful = "【海象叔叔】海象爸爸带着小海象来打猎啦！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 2 do
+                    local walrus = SpawnPrefab("walrus")
+                    if walrus then
+                        walrus.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【牛群迁徙】今天会有大量牛群经过！",
+            playful = "【哞哞大军】一大群牛牛路过，可以薅牛毛啦！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 8 do
+                    local beefalo = SpawnPrefab("beefalo")
+                    if beefalo then
+                        beefalo.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【考拉聚会】今天会有大量考拉出现！",
+            playful = "【树袋熊来了】好多可爱的考拉，抱抱它们！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 6 do
+                    local koalefant = SpawnPrefab("koalefant_summer")
+                    if koalefant then
+                        koalefant.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【龙蝇幼虫】今天会有龙蝇幼虫出现！",
+            playful = "【小火虫虫】小小的龙蝇宝宝到处爬！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 8 do
+                    local lavae = SpawnPrefab("lavae")
+                    if lavae then
+                        lavae.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【鳞片丰收】今天会出现大量鳞片！",
+            playful = "【闪亮鳞片】到处都是鳞片，做鳞甲做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 8 do
+                    local scales = SpawnPrefab("dragon_scales")
+                    if scales then
+                        scales.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【骨片遍地】今天会出现大量骨片！",
+            playful = "【白骨森森】到处都是骨头片，做骨甲做到手软！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local boneshard = SpawnPrefab("boneshard")
+                    if boneshard then
+                        boneshard.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【琥珀奇迹】今天会出现珍贵的琥珀！",
+            playful = "【金黄琥珀】到处都是琥珀，复活神器材料！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 4 do
+                    local amber = SpawnPrefab("yellowamulet")
+                    if amber then
+                        amber.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【胡须丰收】今天会出现大量胡须！",
+            playful = "【毛茸茸】到处都是胡须，做复活石材料够够的！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 10 do
+                    local beard = SpawnPrefab("beardhair")
+                    if beard then
+                        beard.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【粪便堆积】今天会出现大量粪便！",
+            playful = "【臭臭满地】到处都是便便，种田肥料超多！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 15 do
+                    local poop = SpawnPrefab("poop")
+                    if poop then
+                        poop.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【腐烂物堆积】今天会出现大量腐烂物！",
+            playful = "【臭烘烘】到处都是腐烂的东西，做肥料正好！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local rot = SpawnPrefab("spoiled_food")
+                    if rot then
+                        rot.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【蜘蛛腺体】今天会出现大量蜘蛛腺体！",
+            playful = "【治疗药药】到处都是蜘蛛腺体，治疗包做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local gland = SpawnPrefab("spidergland")
+                    if gland then
+                        gland.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【蜘蛛卵现世】今天会出现蜘蛛卵！",
+            playful = "【蜘蛛蛋蛋】蜘蛛卵出现了，可以养蜘蛛啦！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 3 do
+                    local egg = SpawnPrefab("spidereggsack")
+                    if egg then
+                        egg.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【蜂刺丰收】今天会出现大量蜂刺！",
+            playful = "【尖尖刺刺】到处都是蜂刺，做蜂刺陷阱做到手软！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 15 do
+                    local stinger = SpawnPrefab("stinger")
+                    if stinger then
+                        stinger.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【触手尖刺】今天会出现大量触手尖刺！",
+            playful = "【章鱼刺刺】到处都是触手尖刺，做武器做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 8 do
+                    local spike = SpawnPrefab("tentaclespike")
+                    if spike then
+                        spike.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【触手皮革】今天会出现大量触手皮！",
+            playful = "【滑溜溜皮】到处都是触手皮，做装备做到停不下来！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 10 do
+                    local skin = SpawnPrefab("tentaclespots")
+                    if skin then
+                        skin.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【猎犬牙齿】今天会出现大量猎犬牙！",
+            playful = "【尖牙利齿】到处都是狗牙，做吹箭做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local tooth = SpawnPrefab("houndstooth")
+                    if tooth then
+                        tooth.Transform:SetPosition(x + math.random(-20, 20), 0, z + math.random(-20, 20))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【小肉块丰收】今天会出现大量小肉块！",
+            playful = "【小肉肉】到处都是小肉块，做肉丸子正好！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 15 do
+                    local morsel = SpawnPrefab("smallmeat")
+                    if morsel then
+                        morsel.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【青蛙腿丰收】今天会出现大量青蛙腿！",
+            playful = "【呱呱的腿】到处都是青蛙腿，做料理超好吃！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local froglegs = SpawnPrefab("froglegs")
+                    if froglegs then
+                        froglegs.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【火鸡腿盛宴】今天会出现大量火鸡腿！",
+            playful = "【大鸡腿】到处都是火鸡腿，吃肉吃到饱！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 10 do
+                    local drumstick = SpawnPrefab("drumstick")
+                    if drumstick then
+                        drumstick.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【蝙蝠翅膀】今天会出现大量蝙蝠翅膀！",
+            playful = "【小翅膀】到处都是蝙蝠翅膀，做料理做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 12 do
+                    local batwing = SpawnPrefab("batwing")
+                    if batwing then
+                        batwing.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
 }
 
 
 local current_events = {}
 local last_day = -1
+local event_usage_count = {}
 
 local function SelectDailyEvents()
     local selected = {}
@@ -1494,15 +1900,29 @@ local function SelectDailyEvents()
             should_add = false
         end
         
+        if ENABLE_NO_REPEAT and event_usage_count[i] and event_usage_count[i] >= REPEAT_LIMIT then
+            should_add = false
+        end
+        
         if should_add then
             table.insert(available, i)
         end
     end
     
+    if #available == 0 then
+        return nil
+    end
+    
     for i = 1, math.min(EVENT_COUNT, #available) do
         if #available > 0 then
             local index = math.random(1, #available)
-            table.insert(selected, NEWS_EVENTS[available[index]])
+            local event_index = available[index]
+            table.insert(selected, NEWS_EVENTS[event_index])
+            
+            if ENABLE_NO_REPEAT then
+                event_usage_count[event_index] = (event_usage_count[event_index] or 0) + 1
+            end
+            
             table.remove(available, index)
         end
     end
@@ -1541,9 +1961,19 @@ local function CheckDailyNews()
         
         local header_style = NEWS_HEADERS[NEWS_HEADER] or NEWS_HEADERS["beautiful"]
         
+        if not current_events then
+            TheWorld:DoTaskInTime(3, function()
+                AnnounceNews(header_style.top)
+                AnnounceNews("【通知】当前世界已经没有新鲜事啦~")
+                AnnounceNews("可以在模组配置中关闭新闻不重复功能或者等待作者更新更多事件！")
+                AnnounceNews(header_style.bottom)
+            end)
+            return
+        end
+        
         if ENABLE_WARNING and WARNING_TIME > 0 then
             TheWorld:DoTaskInTime(3 - WARNING_TIME, function()
-                AnnounceNews("【预警】每日新闻将在 " .. WARNING_TIME .. " 秒后播报！")
+                AnnounceNews("【预警】每日新闻将在 " .. WARNING_TIME .. " 帧后播报！")
             end)
         end
         
