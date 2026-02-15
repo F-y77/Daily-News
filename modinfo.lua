@@ -57,6 +57,7 @@ configuration_options = {
             {description = "8个事件", data = 8},
             {description = "9个事件", data = 9},
             {description = "10个事件", data = 10},
+            {description = "DEBUG-播报所有新闻", data = 999},
         },
         default = 3,
     },
@@ -103,6 +104,8 @@ configuration_options = {
         label = "新闻播报间隔",
         hover = "每隔多少天播报一次新闻",
         options = {
+            {description = "每个白天播报", data = 0.33},
+            {description = "每半天播报", data = 0.5},
             {description = "每天播报", data = 1},
             {description = "每2天播报", data = 2},
             {description = "每3天播报", data = 3},

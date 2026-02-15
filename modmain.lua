@@ -458,8 +458,9 @@ local NEWS_EVENTS = {
             local player = TheSim:FindFirstEntityWithTag("player")
             if player then
                 local x, y, z = player.Transform:GetWorldPosition()
+                local meats = {"meat", "smallmeat", "froglegs", "drumstick"}
                 for i = 1, 12 do
-                    local meat = SpawnPrefab("meat")
+                    local meat = SpawnPrefab(meats[math.random(1, 4)])
                     if meat then
                         meat.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
                     end
@@ -1880,16 +1881,64 @@ local NEWS_EVENTS = {
         end,
         event_type = "positive"
     },
+    
+    {
+        news = {
+            formal = "【橙宝石富矿】今天会出现大量橙宝石！",
+            playful = "【橙色闪闪】到处都是橙宝石，做懒人护符做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 5 do
+                    local orangegem = SpawnPrefab("orangegem")
+                    if orangegem then
+                        orangegem.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
+    
+    {
+        news = {
+            formal = "【黄宝石富矿】今天会出现大量黄宝石！",
+            playful = "【黄色闪闪】到处都是黄宝石，做建筑护符做到爽！"
+        },
+        effect = function()
+            local player = TheSim:FindFirstEntityWithTag("player")
+            if player then
+                local x, y, z = player.Transform:GetWorldPosition()
+                for i = 1, 5 do
+                    local yellowgem = SpawnPrefab("yellowgem")
+                    if yellowgem then
+                        yellowgem.Transform:SetPosition(x + math.random(-25, 25), 0, z + math.random(-25, 25))
+                    end
+                end
+            end
+        end,
+        event_type = "positive"
+    },
 }
 
 
 local current_events = {}
 local last_day = -1
 local event_usage_count = {}
+local broadcast_counter = 0
 
 local function SelectDailyEvents()
     local selected = {}
     local available = {}
+    
+    if EVENT_COUNT == 999 then
+        for i, event in ipairs(NEWS_EVENTS) do
+            table.insert(selected, event)
+        end
+        return selected
+    end
     
     for i, event in ipairs(NEWS_EVENTS) do
         local should_add = true
@@ -1954,9 +2003,28 @@ local function CheckDailyNews()
     if not TheWorld.ismastersim then return end
     
     local current_day = TheWorld.state.cycles
+    local should_broadcast = false
     
-    if current_day ~= last_day and TheWorld.state.isday and (current_day % NEWS_INTERVAL == 0) then
-        last_day = current_day
+    if NEWS_INTERVAL < 1 then
+        if TheWorld.state.isday then
+            local phase_time = TheWorld.state.time
+            local day_length = TUNING.TOTAL_DAY_TIME or 480
+            local segment_length = day_length * NEWS_INTERVAL
+            local current_segment = math.floor((current_day * day_length + phase_time) / segment_length)
+            
+            if current_segment > broadcast_counter then
+                broadcast_counter = current_segment
+                should_broadcast = true
+            end
+        end
+    else
+        if current_day ~= last_day and TheWorld.state.isday and (current_day % NEWS_INTERVAL == 0) then
+            last_day = current_day
+            should_broadcast = true
+        end
+    end
+    
+    if should_broadcast then
         current_events = SelectDailyEvents()
         
         local header_style = NEWS_HEADERS[NEWS_HEADER] or NEWS_HEADERS["beautiful"]
