@@ -8,7 +8,7 @@ local ENABLE_NEUTRAL = false
 local NEWS_HEADER = "simple"
 local ENABLE_WARNING = false
 local WARNING_TIME = 60
-local ENABLE_NO_REPEAT = true
+local ENABLE_NO_REPEAT = false
 local REPEAT_LIMIT = 5
 
 local NEWS_HEADERS = {
@@ -43,7 +43,7 @@ local function GetConfig()
     if ENABLE_WARNING == nil then ENABLE_WARNING = false end
     WARNING_TIME = GetModConfigData("warning_time") or 60
     ENABLE_NO_REPEAT = GetModConfigData("enable_no_repeat")
-    if ENABLE_NO_REPEAT == nil then ENABLE_NO_REPEAT = true end
+    if ENABLE_NO_REPEAT == nil then ENABLE_NO_REPEAT = false end
     REPEAT_LIMIT = GetModConfigData("repeat_limit") or 5
 end
 
@@ -1926,12 +1926,19 @@ local NEWS_EVENTS = {
 
 local current_events = {}
 local last_day = -1
-local event_usage_count = {}
 local broadcast_counter = 0
+
+local function GetEventUsageCount(inst)
+    if not inst.event_usage_count then
+        inst.event_usage_count = {}
+    end
+    return inst.event_usage_count
+end
 
 local function SelectDailyEvents()
     local selected = {}
     local available = {}
+    local event_usage_count = GetEventUsageCount(TheWorld)
     
     if EVENT_COUNT == 999 then
         for i, event in ipairs(NEWS_EVENTS) do
@@ -2067,6 +2074,14 @@ AddPrefabPostInit("world", function(inst)
     if not TheWorld.ismastersim then return end
     
     GetConfig()
+    
+    inst.event_usage_count = {}
+    
+    inst:ListenForEvent("ms_save", function()
+        if not ENABLE_NO_REPEAT then
+            inst.event_usage_count = {}
+        end
+    end)
     
     inst:DoPeriodicTask(30, CheckDailyNews)
     

@@ -1,4 +1,4 @@
-local MOD_VERSION = "0.8.0"
+local MOD_VERSION = "0.7.2"
 
 name = "每日新闻"
 description = [[
@@ -60,34 +60,6 @@ configuration_options = {
             {description = "DEBUG-播报所有新闻", data = 999},
         },
         default = 3,
-    },
-    {
-        name = "enable_no_repeat",
-        label = "启用新闻不重复",
-        hover = "出现过的新闻达到指定次数后不再出现，如果要禁用的话...（你确定吗？会直接重置新闻！！！）",
-        options = {
-            {description = "启用", data = true},
-            {description = "禁用", data = false},
-        },
-        default = true,
-    },
-    {
-        name = "repeat_limit",
-        label = "新闻重复次数限制",
-        hover = "同一条新闻最多出现几次后不再出现，如果新闻用光了可以增加数量！",
-        options = {
-            {description = "1次", data = 1},
-            {description = "2次", data = 2},
-            {description = "3次", data = 3},
-            {description = "4次", data = 4},
-            {description = "5次", data = 5},
-            {description = "6次", data = 6},
-            {description = "7次", data = 7},
-            {description = "8次", data = 8},
-            {description = "9次", data = 9},
-            {description = "10次", data = 10},
-        },
-        default = 5,
     },
     {
         name = "news_style",
@@ -180,6 +152,38 @@ configuration_options = {
             {description = "60", data = 60},
         },
         default = 60,
+    },
+    
+    Title(""),
+    Title("========== 实验性功能 =========="),
+    Title("警告：以下功能可能无法正常工作！"),
+    {
+        name = "enable_no_repeat",
+        label = "启用新闻不重复",
+        hover = "【实验性】出现过的新闻达到指定次数后不再出现（可能无效）",
+        options = {
+            {description = "启用", data = true},
+            {description = "禁用", data = false},
+        },
+        default = false,
+    },
+    {
+        name = "repeat_limit",
+        label = "新闻重复次数限制",
+        hover = "【实验性】同一条新闻最多出现几次后不再出现（可能无效）",
+        options = {
+            {description = "1次", data = 1},
+            {description = "2次", data = 2},
+            {description = "3次", data = 3},
+            {description = "4次", data = 4},
+            {description = "5次", data = 5},
+            {description = "6次", data = 6},
+            {description = "7次", data = 7},
+            {description = "8次", data = 8},
+            {description = "9次", data = 9},
+            {description = "10次", data = 10},
+        },
+        default = 5,
     },
     
     Title(""),
