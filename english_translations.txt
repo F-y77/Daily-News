@@ -1,0 +1,34 @@
+英文翻译参考（前20个事件）：
+
+1. 【青蛙雨季】今天会有大量青蛙出现！
+   [Frog Rain] A large number of frogs will appear today!
+
+2. 【蝴蝶漫舞】今天会有大量蝴蝶出现！
+   [Butterfly Dance] A large number of butterflies will appear today!
+
+3. 【火鸡盛宴】今天火鸡出现数量大幅增加！
+   [Turkey Feast] Turkey spawns will increase significantly today!
+
+4. 【企鹅聚会】今天企鹅出现数量增加！
+   [Penguin Gathering] Penguin spawns will increase today!
+
+5. 【花朵盛开】今天地图上会生成大量花朵！
+   [Flowers Blooming] A large number of flowers will spawn on the map today!
+
+6. 【燧石富矿】今天地面上会生成更多燧石！
+   [Flint Abundance] More flint will spawn on the ground today!
+
+7. 【树枝丰收】今天地面上会生成更多树枝！
+   [Twig Harvest] More twigs will spawn on the ground today!
+
+8. 【草木繁盛】今天地面上会生成更多草！
+   [Grass Abundance] More grass will spawn on the ground today!
+
+9. 【浆果丰收】今天地面上会生成更多浆果！
+   [Berry Harvest] More berries will spawn on the ground today!
+
+10. 【胡萝卜丰收】今天地面上会生成更多胡萝卜！
+    [Carrot Harvest] More carrots will spawn on the ground today!
+
+注意：由于有100个事件，建议逐步添加英文翻译。
+当前版本：如果没有英文翻译，会显示中文正式版本。

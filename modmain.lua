@@ -10,10 +10,11 @@ local ENABLE_WARNING = false
 local WARNING_TIME = 60
 local ENABLE_NO_REPEAT = false
 local REPEAT_LIMIT = 5
+local NEWS_LANGUAGE = "zh"
 
 local NEWS_HEADERS = {
     beautiful = {
-        top = "══════════════    每日新闻    ══════════════",
+        top = "════════════════  每日新闻  ════════════════",
         bottom = "════════════════════════════════════════"
     },
     simple = {
@@ -21,11 +22,11 @@ local NEWS_HEADERS = {
         bottom = "───────────────────────────────────────"
     },
     elegant = {
-        top = "━━━━━━━━━━━━━━    每日新闻    ━━━━━━━━━━━━━━",
+        top = "━━━━━━━━━━━━━━━━  每日新闻  ━━━━━━━━━━━━━━━━",
         bottom = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     },
     solemn = {
-        top = "■■■■■■■■■■■■■■    每日新闻    ■■■■■■■■■■■■■■",
+        top = "■■■■■■■■■■■■■■■■  每日新闻  ■■■■■■■■■■■■■■■■",
         bottom = "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"
     }
 }
@@ -45,13 +46,15 @@ local function GetConfig()
     ENABLE_NO_REPEAT = GetModConfigData("enable_no_repeat")
     if ENABLE_NO_REPEAT == nil then ENABLE_NO_REPEAT = false end
     REPEAT_LIMIT = GetModConfigData("repeat_limit") or 5
+    NEWS_LANGUAGE = GetModConfigData("news_language") or "zh"
 end
 
 local NEWS_EVENTS = {
     {
         news = {
             formal = "【青蛙雨季】今天会有大量青蛙出现！",
-            playful = "【呱呱来袭】青蛙大军从天而降，呱呱呱呱呱！"
+            playful = "【呱呱来袭】青蛙大军从天而降，呱呱呱呱呱！",
+            english = "[Frog Rain] A large number of frogs will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -71,7 +74,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蝴蝶漫舞】今天会有大量蝴蝶出现！",
-            playful = "【蝴蝶满天飞】哇！到处都是小蝴蝶，抓蝴蝶抓到眼花缭乱！"
+            playful = "【蝴蝶满天飞】哇！到处都是小蝴蝶，抓蝴蝶抓到眼花缭乱！",
+            english = "[Butterfly Dance] A large number of butterflies will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -91,7 +95,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【火鸡盛宴】今天火鸡出现数量大幅增加！",
-            playful = "【火鸡满地跑】今天到处都是火鸡，抓都抓不完，大丰收！"
+            playful = "【火鸡满地跑】今天到处都是火鸡，抓都抓不完，大丰收！",
+            english = "[Turkey Feast] Turkey spawns will increase significantly today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -111,7 +116,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【企鹅聚会】今天企鹅出现数量增加！",
-            playful = "【企鹅开会】企鹅们今天开大会，到处都是企鹅蛋！"
+            playful = "【企鹅开会】企鹅们今天开大会，到处都是企鹅蛋！",
+            english = "[Penguin Gathering] Penguin spawns will increase today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -131,7 +137,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【花朵盛开】今天地图上会生成大量花朵！",
-            playful = "【花花世界】今天到处都开满了花，美得像花园！"
+            playful = "【花花世界】今天到处都开满了花，美得像花园！",
+            english = "[Flowers Blooming] A large number of flowers will spawn on the map today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -151,7 +158,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【燧石富矿】今天地面上会生成更多燧石！",
-            playful = "【石头遍地】今天到处都是燧石，捡都捡不完！"
+            playful = "【石头遍地】今天到处都是燧石，捡都捡不完！",
+            english = "[Flint Abundance] More flint will spawn on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -171,7 +179,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【树枝丰收】今天地面上会生成更多树枝！",
-            playful = "【树枝满地】今天到处都是树枝，捡到手软！"
+            playful = "【树枝满地】今天到处都是树枝，捡到手软！",
+            english = "[Twig Harvest] More twigs will spawn on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -191,7 +200,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【草木繁盛】今天地面上会生成更多草！",
-            playful = "【草草超多】今天到处都是草，采都采不完！"
+            playful = "【草草超多】今天到处都是草，采都采不完！",
+            english = "[Grass Abundance] More grass will spawn on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -211,7 +221,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【浆果丰收】今天地面上会生成更多浆果！",
-            playful = "【浆果爆棚】今天到处都是浆果，吃都吃不完！"
+            playful = "【浆果爆棚】今天到处都是浆果，吃都吃不完！",
+            english = "[Berry Harvest] More berries will spawn on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -231,7 +242,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【胡萝卜丰收】今天地面上会生成更多胡萝卜！",
-            playful = "【胡萝卜大丰收】今天到处都是胡萝卜，兔兔都吃不完！"
+            playful = "【胡萝卜大丰收】今天到处都是胡萝卜，兔兔都吃不完！",
+            english = "[Carrot Harvest] More carrots will spawn on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -251,7 +263,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜜蜂狂欢】今天会有大量蜜蜂飞舞！",
-            playful = "【嗡嗡嗡】小蜜蜂今天开派对，到处嗡嗡嗡飞来飞去！"
+            playful = "【嗡嗡嗡】小蜜蜂今天开派对，到处嗡嗡嗡飞来飞去！",
+            english = "[Bee Carnival] A large number of bees will fly around today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -271,7 +284,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜘蛛出没】今天蜘蛛活动频繁，小心应对！",
-            playful = "【八脚怪来了】蜘蛛们今天组团出门，准备好打蜘蛛啦！"
+            playful = "【八脚怪来了】蜘蛛们今天组团出门，准备好打蜘蛛啦！",
+            english = "[Spider Activity] Spiders are very active today, be careful!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -291,7 +305,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【兔子繁殖季】今天兔子数量激增！",
-            playful = "【兔兔满地跑】到处都是小兔子，蹦蹦跳跳超可爱！"
+            playful = "【兔兔满地跑】到处都是小兔子，蹦蹦跳跳超可爱！",
+            english = "[Rabbit Season] Rabbit population will surge today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -311,7 +326,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【鼹鼠活跃日】今天鼹鼠频繁出没！",
-            playful = "【鼹鼠挖挖挖】鼹鼠们今天疯狂挖洞，到处都是小土堆！"
+            playful = "【鼹鼠挖挖挖】鼹鼠们今天疯狂挖洞，到处都是小土堆！",
+            english = "[Mole Activity] Moles will appear frequently today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -331,7 +347,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【黄金时代】今天地面上会出现黄金！",
-            playful = "【发财啦】地上到处都是金块，今天要发大财啦！"
+            playful = "【发财啦】地上到处都是金块，今天要发大财啦！",
+            english = "[Golden Age] Gold nuggets will appear on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -351,7 +368,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【木材富足】今天地面上会出现大量木头！",
-            playful = "【木头堆成山】到处都是木头，盖房子的材料够够的！"
+            playful = "【木头堆成山】到处都是木头，盖房子的材料够够的！",
+            english = "[Lumber Abundance] A large amount of logs will appear on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -371,7 +389,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【岩石遍地】今天地面上会出现大量石头！",
-            playful = "【石头大丰收】到处都是石头，建墙建到手软！"
+            playful = "【石头大丰收】到处都是石头，建墙建到手软！",
+            english = "[Rock Abundance] A large amount of rocks will appear on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -391,7 +410,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蘑菇大爆发】今天会长出大量蘑菇！",
-            playful = "【蘑菇满地长】红的绿的蓝的蘑菇，到处都是，采蘑菇啦！"
+            playful = "【蘑菇满地长】红的绿的蓝的蘑菇，到处都是，采蘑菇啦！",
+            english = "[Mushroom Outbreak] A large number of mushrooms will grow today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -412,7 +432,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【种子丰收】今天地面上会出现大量种子！",
-            playful = "【种子满地】到处都是种子，种田种到停不下来！"
+            playful = "【种子满地】到处都是种子，种田种到停不下来！",
+            english = "[Seed Harvest] A large amount of seeds will appear on the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -432,7 +453,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜂蜜流淌】今天会出现大量蜂蜜！",
-            playful = "【甜蜜蜜】到处都是蜂蜜，甜到心里去啦！"
+            playful = "【甜蜜蜜】到处都是蜂蜜，甜到心里去啦！",
+            english = "[Honey Flow] A large amount of honey will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -452,7 +474,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【肉食盛宴】今天会出现大量肉类！",
-            playful = "【肉肉满地】到处都是肉，吃肉吃到饱！"
+            playful = "【肉肉满地】到处都是肉，吃肉吃到饱！",
+            english = "[Meat Feast] A large amount of meat will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -473,7 +496,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【鸟蛋遍地】今天会出现大量鸟蛋！",
-            playful = "【蛋蛋满地】到处都是鸟蛋，煎蛋煮蛋炒蛋随便做！"
+            playful = "【蛋蛋满地】到处都是鸟蛋，煎蛋煮蛋炒蛋随便做！",
+            english = "[Bird Eggs Everywhere] A large number of bird eggs will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -493,7 +517,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【曼德拉草现身】今天会出现珍稀的曼德拉草！",
-            playful = "【小人参出没】曼德拉草今天到处跑，抓住它发大财！"
+            playful = "【小人参出没】曼德拉草今天到处跑，抓住它发大财！",
+            english = "[Mandrake Appearance] Rare mandrakes will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -513,7 +538,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【机械零件】今天会出现珍贵的齿轮！",
-            playful = "【齿轮满地】到处都是齿轮，机器人都不够用啦！"
+            playful = "【齿轮满地】到处都是齿轮，机器人都不够用啦！",
+            english = "[Mechanical Parts] Precious gears will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -533,7 +559,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【猪皮丰收】今天会出现大量猪皮！",
-            playful = "【猪皮满地】到处都是猪皮，做帽子做到手软！"
+            playful = "【猪皮满地】到处都是猪皮，做帽子做到手软！",
+            english = "[Pigskin Harvest] A large amount of pigskin will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -553,7 +580,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜘蛛丝飘飘】今天会出现大量蜘蛛丝！",
-            playful = "【丝丝满天飞】到处都是蜘蛛丝，做网做到停不下来！"
+            playful = "【丝丝满天飞】到处都是蜘蛛丝，做网做到停不下来！",
+            english = "[Spider Silk] A large amount of spider silk will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -573,7 +601,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【暗影涌动】今天会出现神秘的噩梦燃料！",
-            playful = "【黑黑的东西】到处都是噩梦燃料，暗影装备做起来！"
+            playful = "【黑黑的东西】到处都是噩梦燃料，暗影装备做起来！",
+            english = "[Shadow Surge] Mysterious nightmare fuel will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -593,7 +622,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【冰雪降临】今天会出现大量冰块！",
-            playful = "【冰冰凉凉】到处都是冰块，做冰箱做到爽！"
+            playful = "【冰冰凉凉】到处都是冰块，做冰箱做到爽！",
+            english = "[Ice Age] A large amount of ice will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -613,7 +643,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【松果满地】今天会出现大量松果！",
-            playful = "【松果掉不停】到处都是松果，种树种到森林成片！"
+            playful = "【松果掉不停】到处都是松果，种树种到森林成片！",
+            english = "[Pinecone Abundance] A large number of pinecones will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -633,7 +664,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【宝石奇迹】今天会出现珍贵的宝石！",
-            playful = "【宝石满地捡】红宝石蓝宝石紫宝石，到处都是，发大财啦！"
+            playful = "【宝石满地捡】红宝石蓝宝石紫宝石，到处都是，发大财啦！",
+            english = "[Gem Miracle] Precious gems will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -654,7 +686,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【萤火虫之夜】今天晚上会有大量萤火虫出现！",
-            playful = "【小灯笼飞呀飞】晚上到处都是萤火虫，亮晶晶的超漂亮！"
+            playful = "【小灯笼飞呀飞】晚上到处都是萤火虫，亮晶晶的超漂亮！",
+            english = "[Firefly Night] A large number of fireflies will appear tonight!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -674,7 +707,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【高鸟蛋现世】今天会出现珍贵的高鸟蛋！",
-            playful = "【大鸟蛋来啦】高鸟蛋出现了，小心高鸟追你哦！"
+            playful = "【大鸟蛋来啦】高鸟蛋出现了，小心高鸟追你哦！",
+            english = "[Tallbird Egg] Precious tallbird eggs will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -694,7 +728,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜂巢丰收】今天会出现蜂巢和蜂窝！",
-            playful = "【蜜蜂的家】到处都是蜂巢，小心被蜜蜂蜇哦！"
+            playful = "【蜜蜂的家】到处都是蜂巢，小心被蜜蜂蜇哦！",
+            english = "[Honeycomb Harvest] Honeycombs will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -714,7 +749,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【怪物肉堆积】今天会出现大量怪物肉！",
-            playful = "【黑黑的肉】到处都是怪物肉，喂猪人正好！"
+            playful = "【黑黑的肉】到处都是怪物肉，喂猪人正好！",
+            english = "[Monster Meat] A large amount of monster meat will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -734,7 +770,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【鱼人出没】今天鱼人活动频繁！",
-            playful = "【鱼鱼人来了】鱼人们今天组团出门，小心被围攻！"
+            playful = "【鱼鱼人来了】鱼人们今天组团出门，小心被围攻！",
+            english = "[Merm Activity] Merms are very active today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -754,7 +791,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【猪人聚会】今天猪人数量增加！",
-            playful = "【猪猪开派对】猪人们今天开大会，可以招募好多帮手啦！"
+            playful = "【猪猪开派对】猪人们今天开大会，可以招募好多帮手啦！",
+            english = "[Pig Gathering] Pig population will increase today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -774,7 +812,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【木炭丰收】今天会出现大量木炭！",
-            playful = "【黑黑的炭】到处都是木炭，做火药做到爽！"
+            playful = "【黑黑的炭】到处都是木炭，做火药做到爽！",
+            english = "[Charcoal Harvest] A large amount of charcoal will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -794,7 +833,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【硝石富矿】今天会出现大量硝石！",
-            playful = "【黄色石头】到处都是硝石，做火药做炸药随便做！"
+            playful = "【黄色石头】到处都是硝石，做火药做炸药随便做！",
+            english = "[Nitre Abundance] A large amount of nitre will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -814,7 +854,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【芦苇丛生】今天会出现大量芦苇！",
-            playful = "【芦苇满地长】到处都是芦苇，做纸做到停不下来！"
+            playful = "【芦苇满地长】到处都是芦苇，做纸做到停不下来！",
+            english = "[Reed Growth] A large amount of reeds will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -834,7 +875,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【猎犬来袭】今天会有猎犬群出现，注意防御！",
-            playful = "【汪汪队出动】一群凶猛的狗狗要来了，快准备武器！"
+            playful = "【汪汪队出动】一群凶猛的狗狗要来了，快准备武器！",
+            english = "[Hound Attack] Hound packs will appear today, be prepared!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -854,7 +896,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【触手危机】今天会有触手从地下冒出！",
-            playful = "【章鱼脚出没】小心地上的触手，会把你抓住打！"
+            playful = "【章鱼脚出没】小心地上的触手，会把你抓住打！",
+            english = "[Tentacle Crisis] Tentacles will emerge from the ground today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -874,7 +917,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜘蛛战士】今天会出现强大的蜘蛛战士！",
-            playful = "【大蜘蛛来了】超大只的蜘蛛战士出现了，快跑啊！"
+            playful = "【大蜘蛛来了】超大只的蜘蛛战士出现了，快跑啊！",
+            english = "[Spider Warriors] Powerful spider warriors will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -894,7 +938,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【发条骑士】今天会有发条骑士出现！",
-            playful = "【机器人来了】叮叮当当的发条骑士要来打架了！"
+            playful = "【机器人来了】叮叮当当的发条骑士要来打架了！",
+            english = "[Clockwork Knight] Clockwork knights will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -914,7 +959,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【发条主教】今天会有发条主教出现！",
-            playful = "【激光炮来了】会发射激光的主教机器人出现了！"
+            playful = "【激光炮来了】会发射激光的主教机器人出现了！",
+            english = "[Clockwork Bishop] Clockwork bishops will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -934,7 +980,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【发条战车】今天会有发条战车出现！",
-            playful = "【小坦克来了】会冲撞的战车机器人出现了，小心被撞飞！"
+            playful = "【小坦克来了】会冲撞的战车机器人出现了，小心被撞飞！",
+            english = "[Clockwork Rook] Clockwork rooks will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -954,7 +1001,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【暗影怪物】今天理智值下降时会出现更多暗影生物！",
-            playful = "【小黑人来了】今天暗影怪物特别多，保持理智很重要！"
+            playful = "【小黑人来了】今天暗影怪物特别多，保持理智很重要！",
+            english = "[Shadow Creatures] More shadow creatures will appear when sanity drops today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -974,7 +1022,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【杀人蜂群】今天会有危险的杀人蜂出现！",
-            playful = "【红眼蜜蜂】杀人蜂来了，被蜇到会很痛的！"
+            playful = "【红眼蜜蜂】杀人蜂来了，被蜇到会很痛的！",
+            english = "[Killer Bees] Dangerous killer bees will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -994,7 +1043,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蚊子成灾】今天会有大量蚊子出现！",
-            playful = "【嗡嗡嗡吸血】讨厌的蚊子要来吸血了，快躲开！"
+            playful = "【嗡嗡嗡吸血】讨厌的蚊子要来吸血了，快躲开！",
+            english = "[Mosquito Plague] A large number of mosquitoes will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1014,7 +1064,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【活木奇迹】今天会出现珍贵的活木！",
-            playful = "【会动的木头】活木出现啦，做魔法装备的好材料！"
+            playful = "【会动的木头】活木出现啦，做魔法装备的好材料！",
+            english = "[Living Log Miracle] Precious living logs will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1034,7 +1085,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【紫宝石富矿】今天会出现大量紫宝石！",
-            playful = "【紫色闪闪】到处都是紫宝石，做传送杖做到爽！"
+            playful = "【紫色闪闪】到处都是紫宝石，做传送杖做到爽！",
+            english = "[Purple Gem Abundance] A large amount of purple gems will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1054,7 +1106,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【红宝石富矿】今天会出现大量红宝石！",
-            playful = "【红色闪闪】到处都是红宝石，做火魔杖做到手软！"
+            playful = "【红色闪闪】到处都是红宝石，做火魔杖做到手软！",
+            english = "[Red Gem Abundance] A large amount of red gems will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1074,7 +1127,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蓝宝石富矿】今天会出现大量蓝宝石！",
-            playful = "【蓝色闪闪】到处都是蓝宝石，做冰魔杖做到爽！"
+            playful = "【蓝色闪闪】到处都是蓝宝石，做冰魔杖做到爽！",
+            english = "[Blue Gem Abundance] A large amount of blue gems will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1094,7 +1148,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【牛角丰收】今天会出现大量牛角！",
-            playful = "【牛牛的角】到处都是牛角，做牛角帽做到停不下来！"
+            playful = "【牛牛的角】到处都是牛角，做牛角帽做到停不下来！",
+            english = "[Horn Harvest] A large amount of beefalo horns will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1114,7 +1169,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【羽毛飘飘】今天会出现大量羽毛！",
-            playful = "【羽毛满天飞】到处都是羽毛，做飞镖做到手软！"
+            playful = "【羽毛满天飞】到处都是羽毛，做飞镖做到手软！",
+            english = "[Feather Fall] A large amount of feathers will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1134,7 +1190,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜂王浆现世】今天会出现珍贵的蜂王浆！",
-            playful = "【超级蜂蜜】蜂王浆出现了，吃了加好多血！"
+            playful = "【超级蜂蜜】蜂王浆出现了，吃了加好多血！",
+            english = "[Royal Jelly] Precious royal jelly will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1154,7 +1211,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【大肉丰收】今天会出现大量大肉！",
-            playful = "【大块肉肉】到处都是大肉，吃肉吃到撑！"
+            playful = "【大块肉肉】到处都是大肉，吃肉吃到撑！",
+            english = "[Big Meat Harvest] A large amount of meat will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1174,7 +1232,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【鱼类丰收】今天会出现大量鱼肉！",
-            playful = "【鱼鱼满地】到处都是鱼，做鱼排做到爽！"
+            playful = "【鱼鱼满地】到处都是鱼，做鱼排做到爽！",
+            english = "[Fish Harvest] A large amount of fish will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1194,7 +1253,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【鳗鱼盛宴】今天会出现大量鳗鱼！",
-            playful = "【长长的鱼】到处都是鳗鱼，做鳗鱼料理超好吃！"
+            playful = "【长长的鱼】到处都是鳗鱼，做鳗鱼料理超好吃！",
+            english = "[Eel Feast] A large amount of eels will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1214,7 +1274,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【天气预报】今天天气晴朗，适合外出探险。",
-            playful = "【好天气】今天阳光明媚，出门玩耍的好日子！"
+            playful = "【好天气】今天阳光明媚，出门玩耍的好日子！",
+            english = "[Weather Forecast] The weather is clear today, perfect for exploration."
         },
         effect = function()
         end,
@@ -1224,7 +1285,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【生态观察】今天森林中的生物活动正常。",
-            playful = "【平平无奇】今天一切都很平常，没什么特别的。"
+            playful = "【平平无奇】今天一切都很平常，没什么特别的。",
+            english = "[Ecological Observation] Creatures in the forest are behaving normally today."
         },
         effect = function()
         end,
@@ -1234,7 +1296,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【地质报告】今天地质活动稳定，无异常现象。",
-            playful = "【大地安静】今天地面很安静，没有地震也没有塌陷。"
+            playful = "【大地安静】今天地面很安静，没有地震也没有塌陷。",
+            english = "[Geological Report] Geological activity is stable today, no anomalies."
         },
         effect = function()
         end,
@@ -1244,7 +1307,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【植被调查】今天植物生长状况良好。",
-            playful = "【花花草草】今天的花草树木都长得好好的。"
+            playful = "【花花草草】今天的花草树木都长得好好的。",
+            english = "[Vegetation Survey] Plant growth is good today."
         },
         effect = function()
         end,
@@ -1254,7 +1318,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【气象观测】今天风力适中，温度适宜。",
-            playful = "【不冷不热】今天温度刚刚好，很舒服的一天。"
+            playful = "【不冷不热】今天温度刚刚好，很舒服的一天。",
+            english = "[Weather Observation] Wind is moderate and temperature is pleasant today."
         },
         effect = function()
         end,
@@ -1264,7 +1329,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【资源统计】今天各类资源储备充足。",
-            playful = "【东西够用】今天资源都够用，不用担心缺东西。"
+            playful = "【东西够用】今天资源都够用，不用担心缺东西。",
+            english = "[Resource Statistics] All resources are abundant today."
         },
         effect = function()
         end,
@@ -1274,7 +1340,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【安全提示】今天请注意保持警惕，做好防护。",
-            playful = "【小心点哦】今天记得带好装备，安全第一！"
+            playful = "【小心点哦】今天记得带好装备，安全第一！",
+            english = "[Safety Reminder] Stay alert and be well-prepared today."
         },
         effect = function()
         end,
@@ -1284,7 +1351,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【环境监测】今天环境指数正常，空气清新。",
-            playful = "【空气真好】今天空气很清新，深呼吸感觉真棒！"
+            playful = "【空气真好】今天空气很清新，深呼吸感觉真棒！",
+            english = "[Environmental Monitoring] Environmental index is normal, air is fresh today."
         },
         effect = function()
         end,
@@ -1294,7 +1362,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【生物多样性】今天观察到多种生物和谐共存。",
-            playful = "【动物们很和平】今天动物们都很乖，没有打架。"
+            playful = "【动物们很和平】今天动物们都很乖，没有打架。",
+            english = "[Biodiversity] Various creatures are coexisting peacefully today."
         },
         effect = function()
         end,
@@ -1304,7 +1373,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【日常提醒】今天是普通的一天，祝您生存愉快。",
-            playful = "【平凡的一天】今天没什么特别的，好好享受生活吧！"
+            playful = "【平凡的一天】今天没什么特别的，好好享受生活吧！",
+            english = "[Daily Reminder] It's an ordinary day, enjoy your survival."
         },
         effect = function()
         end,
@@ -1314,7 +1384,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【精神焕发】今天所有玩家理智值恢复！",
-            playful = "【脑子清醒】今天脑子特别清醒，理智值满满！"
+            playful = "【脑子清醒】今天脑子特别清醒，理智值满满！",
+            english = "[Mental Clarity] All players' sanity will be restored today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1329,7 +1400,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【体力充沛】今天所有玩家饥饿值恢复！",
-            playful = "【吃得饱饱】今天肚子吃得饱饱的，不用担心饿肚子！"
+            playful = "【吃得饱饱】今天肚子吃得饱饱的，不用担心饿肚子！",
+            english = "[Full Stomach] All players' hunger will be restored today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1344,7 +1416,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【生命旺盛】今天所有玩家生命值恢复！",
-            playful = "【满血复活】今天血量满满的，精神抖擞！"
+            playful = "【满血复活】今天血量满满的，精神抖擞！",
+            english = "[Full Health] All players' health will be restored today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1359,7 +1432,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【白昼延长】今天白天时间延长50%！",
-            playful = "【太阳不想下班】今天太阳多待一会儿，白天变长啦！"
+            playful = "【太阳不想下班】今天太阳多待一会儿，白天变长啦！",
+            english = "[Extended Daylight] Daytime will be extended by 50% today!"
         },
         effect = function()
             if TheWorld and TheWorld.components.clock then
@@ -1374,7 +1448,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【移动加速】今天所有玩家移动速度提升！",
-            playful = "【跑得飞快】今天脚底生风，跑得超级快！"
+            playful = "【跑得飞快】今天脚底生风，跑得超级快！",
+            english = "[Speed Boost] All players' movement speed will increase today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1394,7 +1469,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【工作效率】今天所有玩家工作速度提升！",
-            playful = "【手速超快】今天手速飞快，干活效率翻倍！"
+            playful = "【手速超快】今天手速飞快，干活效率翻倍！",
+            english = "[Work Efficiency] All players' work speed will increase today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1414,7 +1490,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【温度适宜】今天所有玩家体温恢复正常！",
-            playful = "【不冷不热】今天体温刚刚好，舒服极了！"
+            playful = "【不冷不热】今天体温刚刚好，舒服极了！",
+            english = "[Temperature Balance] All players' temperature will normalize today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1429,7 +1506,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【潮湿消散】今天所有玩家身上的潮湿度清除！",
-            playful = "【瞬间变干】今天身上的水分都蒸发了，干干爽爽！"
+            playful = "【瞬间变干】今天身上的水分都蒸发了，干干爽爽！",
+            english = "[Dry Off] All players' wetness will be removed today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1444,7 +1522,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【经验加成】今天所有玩家获得经验加成！",
-            playful = "【升级快快】今天做什么都能学到更多东西！"
+            playful = "【升级快快】今天做什么都能学到更多东西！",
+            english = "[Experience Boost] All players will gain bonus experience today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1465,7 +1544,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【幸运降临】今天所有玩家幸运值提升！",
-            playful = "【好运连连】今天运气爆棚，做什么都顺利！"
+            playful = "【好运连连】今天运气爆棚，做什么都顺利！",
+            english = "[Lucky Day] All players' luck will increase today!"
         },
         effect = function()
             for i, player in ipairs(AllPlayers) do
@@ -1485,7 +1565,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【海象出没】今天会有海象猎人出现！",
-            playful = "【海象叔叔】海象爸爸带着小海象来打猎啦！"
+            playful = "【海象叔叔】海象爸爸带着小海象来打猎啦！",
+            english = "[Walrus Hunters] Walrus hunters will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1505,7 +1586,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【牛群迁徙】今天会有大量牛群经过！",
-            playful = "【哞哞大军】一大群牛牛路过，可以薅牛毛啦！"
+            playful = "【哞哞大军】一大群牛牛路过，可以薅牛毛啦！",
+            english = "[Beefalo Migration] A large herd of beefalo will pass by today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1525,7 +1607,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【考拉聚会】今天会有大量考拉出现！",
-            playful = "【树袋熊来了】好多可爱的考拉，抱抱它们！"
+            playful = "【树袋熊来了】好多可爱的考拉，抱抱它们！",
+            english = "[Koalefant Gathering] A large number of koalefants will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1545,7 +1628,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【龙蝇幼虫】今天会有龙蝇幼虫出现！",
-            playful = "【小火虫虫】小小的龙蝇宝宝到处爬！"
+            playful = "【小火虫虫】小小的龙蝇宝宝到处爬！",
+            english = "[Lavae] Dragonfly larvae will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1565,7 +1649,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【鳞片丰收】今天会出现大量鳞片！",
-            playful = "【闪亮鳞片】到处都是鳞片，做鳞甲做到爽！"
+            playful = "【闪亮鳞片】到处都是鳞片，做鳞甲做到爽！",
+            english = "[Scale Harvest] A large amount of scales will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1585,7 +1670,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【骨片遍地】今天会出现大量骨片！",
-            playful = "【白骨森森】到处都是骨头片，做骨甲做到手软！"
+            playful = "【白骨森森】到处都是骨头片，做骨甲做到手软！",
+            english = "[Bone Shard Abundance] A large amount of bone shards will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1605,7 +1691,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【琥珀奇迹】今天会出现珍贵的琥珀！",
-            playful = "【金黄琥珀】到处都是琥珀，复活神器材料！"
+            playful = "【金黄琥珀】到处都是琥珀，复活神器材料！",
+            english = "[Amber Miracle] Precious yellow amulets will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1625,7 +1712,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【胡须丰收】今天会出现大量胡须！",
-            playful = "【毛茸茸】到处都是胡须，做复活石材料够够的！"
+            playful = "【毛茸茸】到处都是胡须，做复活石材料够够的！",
+            english = "[Beard Hair Harvest] A large amount of beard hair will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1645,7 +1733,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【粪便堆积】今天会出现大量粪便！",
-            playful = "【臭臭满地】到处都是便便，种田肥料超多！"
+            playful = "【臭臭满地】到处都是便便，种田肥料超多！",
+            english = "[Manure Abundance] A large amount of manure will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1665,7 +1754,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【腐烂物堆积】今天会出现大量腐烂物！",
-            playful = "【臭烘烘】到处都是腐烂的东西，做肥料正好！"
+            playful = "【臭烘烘】到处都是腐烂的东西，做肥料正好！",
+            english = "[Rot Abundance] A large amount of rot will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1685,7 +1775,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜘蛛腺体】今天会出现大量蜘蛛腺体！",
-            playful = "【治疗药药】到处都是蜘蛛腺体，治疗包做到爽！"
+            playful = "【治疗药药】到处都是蜘蛛腺体，治疗包做到爽！",
+            english = "[Spider Gland] A large amount of spider glands will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1705,7 +1796,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜘蛛卵现世】今天会出现蜘蛛卵！",
-            playful = "【蜘蛛蛋蛋】蜘蛛卵出现了，可以养蜘蛛啦！"
+            playful = "【蜘蛛蛋蛋】蜘蛛卵出现了，可以养蜘蛛啦！",
+            english = "[Spider Eggs] Spider eggs will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1725,7 +1817,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蜂刺丰收】今天会出现大量蜂刺！",
-            playful = "【尖尖刺刺】到处都是蜂刺，做蜂刺陷阱做到手软！"
+            playful = "【尖尖刺刺】到处都是蜂刺，做蜂刺陷阱做到手软！",
+            english = "[Stinger Harvest] A large amount of stingers will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1745,7 +1838,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【触手尖刺】今天会出现大量触手尖刺！",
-            playful = "【章鱼刺刺】到处都是触手尖刺，做武器做到爽！"
+            playful = "【章鱼刺刺】到处都是触手尖刺，做武器做到爽！",
+            english = "[Tentacle Spike] A large amount of tentacle spikes will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1765,7 +1859,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【触手皮革】今天会出现大量触手皮！",
-            playful = "【滑溜溜皮】到处都是触手皮，做装备做到停不下来！"
+            playful = "【滑溜溜皮】到处都是触手皮，做装备做到停不下来！",
+            english = "[Tentacle Spots] A large amount of tentacle spots will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1785,7 +1880,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【猎犬牙齿】今天会出现大量猎犬牙！",
-            playful = "【尖牙利齿】到处都是狗牙，做吹箭做到爽！"
+            playful = "【尖牙利齿】到处都是狗牙，做吹箭做到爽！",
+            english = "[Hound Tooth] A large amount of hound teeth will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1805,7 +1901,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【小肉块丰收】今天会出现大量小肉块！",
-            playful = "【小肉肉】到处都是小肉块，做肉丸子正好！"
+            playful = "【小肉肉】到处都是小肉块，做肉丸子正好！",
+            english = "[Small Meat Harvest] A large amount of small meat will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1825,7 +1922,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【青蛙腿丰收】今天会出现大量青蛙腿！",
-            playful = "【呱呱的腿】到处都是青蛙腿，做料理超好吃！"
+            playful = "【呱呱的腿】到处都是青蛙腿，做料理超好吃！",
+            english = "[Frog Legs Harvest] A large amount of frog legs will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1845,7 +1943,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【火鸡腿盛宴】今天会出现大量火鸡腿！",
-            playful = "【大鸡腿】到处都是火鸡腿，吃肉吃到饱！"
+            playful = "【大鸡腿】到处都是火鸡腿，吃肉吃到饱！",
+            english = "[Drumstick Feast] A large amount of drumsticks will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1865,7 +1964,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【蝙蝠翅膀】今天会出现大量蝙蝠翅膀！",
-            playful = "【小翅膀】到处都是蝙蝠翅膀，做料理做到爽！"
+            playful = "【小翅膀】到处都是蝙蝠翅膀，做料理做到爽！",
+            english = "[Bat Wing] A large amount of bat wings will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1885,7 +1985,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【橙宝石富矿】今天会出现大量橙宝石！",
-            playful = "【橙色闪闪】到处都是橙宝石，做懒人护符做到爽！"
+            playful = "【橙色闪闪】到处都是橙宝石，做懒人护符做到爽！",
+            english = "[Orange Gem Abundance] A large amount of orange gems will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -1905,7 +2006,8 @@ local NEWS_EVENTS = {
     {
         news = {
             formal = "【黄宝石富矿】今天会出现大量黄宝石！",
-            playful = "【黄色闪闪】到处都是黄宝石，做建筑护符做到爽！"
+            playful = "【黄色闪闪】到处都是黄宝石，做建筑护符做到爽！",
+            english = "[Yellow Gem Abundance] A large amount of yellow gems will appear today!"
         },
         effect = function()
             local player = TheSim:FindFirstEntityWithTag("player")
@@ -2000,7 +2102,15 @@ end
 
 local function GetNewsText(event)
     if type(event.news) == "table" then
-        return event.news[NEWS_STYLE] or event.news.formal
+        if NEWS_LANGUAGE == "en" then
+            if event.news.english then
+                return event.news.english
+            else
+                return event.news.formal
+            end
+        else
+            return event.news[NEWS_STYLE] or event.news.formal
+        end
     else
         return event.news
     end
